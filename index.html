@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>🕯️ HanukkahRoots אור היסוד — לקט חנוכה מן החומש</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>HanukkahRoots — לקט חנוכה מן החומש</title>
+
+  <!-- SEO / Social -->
+  <meta name="description" content="HanukkahRoots — לקט מפואר של שורשי חנוכה מתוך חמשת חומשי תורה: אור, אש, שמן, חנוכה, מסירות." />
+  <meta property="og:title" content="HanukkahRoots — לקט חנוכה מן החומש" />
+  <meta property="og:description" content="אור היסוד: שורשי חנוכה בתורה. חיפוש, כרטיסיות, וסיכומי עומק." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://anlominus.github.io/HanukkahRoots/" />
+  <!-- אופציונלי: הוסף תמונת OG -->
+  <!-- <meta property="og:image" content="https://anlominus.github.io/HanukkahRoots/assets/img/og-cover.png" /> -->
+
+  <link rel="preload" href="assets/css/styles.css" as="style" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <a class="skip" href="#main">דלג לתוכן</a>
+
+  <!-- Top Glow -->
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="wrap header__inner">
+      <div class="brand">
+        <div class="brand__mark" aria-hidden="true">🕯️</div>
+        <div class="brand__text">
+          <div class="brand__title">HanukkahRoots</div>
+          <div class="brand__sub">אור היסוד — לקט חנוכה מן החומש</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="ניווט ראשי">
+        <a href="#roots" class="nav__link">📚 הלקט</a>
+        <a href="#five" class="nav__link">🧩 חמשת החומשים</a>
+        <a href="#map" class="nav__link">🗺️ מפת מושגים</a>
+        <a href="#share" class="nav__link">🚀 שיתוף</a>
+      </nav>
+
+      <button class="btn btn--ghost" id="toggleTheme" type="button" aria-label="החלף מצב תצוגה">
+        🌙/☀️
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap hero__inner">
+        <div class="hero__content">
+          <div class="pill">
+            <span class="dot"></span>
+            <span>HanukkahRoots (HR) • Premium GitHub Pages</span>
+          </div>
+
+          <h1 class="hero__title">
+            🕯️ שורשי חנוכה בתורה — אתר לקט מפואר
+          </h1>
+
+          <p class="hero__lead">
+            כאן מרוכזים חיבורי היסוד של חנוכה מתוך חמשת חומשי תורה: <b>אור</b>, <b>אש</b>, <b>שמן</b>,
+            <b>חנוכת המזבח</b>, ו<b>מסירות נפש</b> — בצורה נקייה, חדה, ומוכנה לשיתוף בכל הרשתות ✨
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn" href="#roots">🔥 התחל לקט</a>
+            <button class="btn btn--soft" id="copyLink" type="button">🔗 העתק לינק</button>
+          </div>
+
+          <div class="hero__stats">
+            <div class="stat">
+              <div class="stat__num" id="statCount">—</div>
+              <div class="stat__label">🧾 מקטעים באתר</div>
+            </div>
+            <div class="stat">
+              <div class="stat__num">5</div>
+              <div class="stat__label">📚 חומשים</div>
+            </div>
+            <div class="stat">
+              <div class="stat__num">HR</div>
+              <div class="stat__label">🧠 קוד־שם</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__card" role="region" aria-label="חיפוש מהיר">
+          <div class="card">
+            <div class="card__title">🔎 חיפוש לקטים</div>
+            <p class="card__hint">חפש לפי מילת מפתח: אור, שמן, מנורה, חנוכה, טהרה, מסירות…</p>
+
+            <div class="search">
+              <input id="searchInput" type="search" placeholder="הקלד לחיפוש…" autocomplete="off" />
+              <button class="btn btn--mini" id="clearSearch" type="button">🧹 נקה</button>
+            </div>
+
+            <div class="chips" aria-label="פילטרים מהירים">
+              <button class="chip" data-filter="all" type="button">✨ הכל</button>
+              <button class="chip" data-filter="אור" type="button">🌟 אור</button>
+              <button class="chip" data-filter="אש" type="button">🔥 אש</button>
+              <button class="chip" data-filter="שמן" type="button">🫒 שמן</button>
+              <button class="chip" data-filter="מנורה" type="button">🕎 מנורה</button>
+              <button class="chip" data-filter="חנוכה" type="button">🎉 חנוכה</button>
+              <button class="chip" data-filter="טהרה" type="button">🧼 טהרה</button>
+              <button class="chip" data-filter="מסירות" type="button">⚔️ מסירות</button>
+            </div>
+
+            <div class="mini-note">
+              💡 טיפ: אפשר ללחוץ על כרטיסייה כדי לפתוח אותה במצב “פוקוס”.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roots (cards list) -->
+    <section id="roots" class="section">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 class="section__title">📚 הלקט המרכזי</h2>
+          <p class="section__sub">כל כרטיסייה היא “נר” — קצר, חד, ושימושי לשיעור, פוסט, או השראה יומית 🕯️</p>
+        </div>
+
+        <div id="cardsGrid" class="grid" aria-live="polite"></div>
+
+        <div class="empty" id="emptyState" hidden>
+          <div class="empty__icon">🕯️</div>
+          <div class="empty__title">לא נמצאו תוצאות</div>
+          <div class="empty__sub">נסה מילה אחרת או נקה פילטר ✨</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Five Books -->
+    <section id="five" class="section section--alt">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 class="section__title">🧩 חמשת החומשים — מהות חנוכה בכל ספר</h2>
+          <p class="section__sub">סיכום־על קצר שמחבר את החומש ישירות לרוח החג 🔥</p>
+        </div>
+
+        <div class="five">
+          <article class="five__item">
+            <h3>📘 בראשית — אור פנימי</h3>
+            <p>בריאת האור לפני המאורות: אור שאינו תלוי במציאות החיצונית.</p>
+          </article>
+          <article class="five__item">
+            <h3>📕 שמות — אש וגאולה</h3>
+            <p>הסנה הבוער שאינו אוכל: אש קדושה שמחזיקה מעמד בלי להיכבות.</p>
+          </article>
+          <article class="five__item">
+            <h3>📗 ויקרא — שמן ומנורה</h3>
+            <p>שמן זית זך והדלקה תמידית: טהרה, קודש, והתמדה.</p>
+          </article>
+          <article class="five__item">
+            <h3>📙 במדבר — חנוכת המזבח</h3>
+            <p>חנוכת המזבח ונשיאים: חנוכה של ימים, אחדות, ותהליך.</p>
+          </article>
+          <article class="five__item">
+            <h3>📒 דברים — זהות ומסירות</h3>
+            <p>עמידה מול תרבות זרה: מאבק על נשמה, לא רק על קרקע.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concept Map -->
+    <section id="map" class="section">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 class="section__title">🗺️ מפת מושגים — “מה מדליקים כאן?”</h2>
+          <p class="section__sub">הדלקה = תנועה פנימית. הטקסט כאן בנוי לשיתוף מהיר 🎯</p>
+        </div>
+
+        <div class="map">
+          <div class="map__node">🌟 אור</div>
+          <div class="map__line" aria-hidden="true"></div>
+          <div class="map__node">🔥 אש</div>
+          <div class="map__line" aria-hidden="true"></div>
+          <div class="map__node">🫒 שמן</div>
+          <div class="map__line" aria-hidden="true"></div>
+          <div class="map__node">🕎 מנורה</div>
+          <div class="map__line" aria-hidden="true"></div>
+          <div class="map__node">🎉 חנוכה</div>
+          <div class="map__line" aria-hidden="true"></div>
+          <div class="map__node">⚔️ מסירות</div>
+        </div>
+
+        <div class="quote">
+          <div class="quote__icon">📜</div>
+          <div class="quote__text">
+            <b>“נֵר ה’ נִשְׁמַת אָדָם”</b>
+            <span class="quote__ref">— משלי כ, כז</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Share -->
+    <section id="share" class="section section--alt">
+      <div class="wrap">
+        <div class="share">
+          <div class="share__left">
+            <h2 class="section__title">🚀 שיתוף מהיר לכל הרשתות</h2>
+            <p class="section__sub">
+              העתיקו לינק, שתפו, והדליקו אור ברשת — פוסט, סטורי, קבוצות, הכל ✅
+            </p>
+
+            <div class="share__buttons">
+              <button class="btn" id="copyLink2" type="button">🔗 העתק לינק</button>
+              <button class="btn btn--soft" id="copySummary" type="button">🧾 העתק תקציר</button>
+            </div>
+
+            <div class="rap">
+              <div class="rap__title">🎤 פזמון ראפ (4 שורות)</div>
+              <pre class="rap__box" id="rapText">נר קטן בחושך, לא מחכה לרוב,
+שמן טהור זורם — זה הכוח הטוב.
+יוונים מול נשמה, חרב מול לב,
+האור לא מתווכח — הוא פשוט מתלהב.</pre>
+            </div>
+          </div>
+
+          <div class="share__right">
+            <div class="card">
+              <div class="card__title">🕰️ מצב אתר</div>
+              <div class="kv">
+                <div class="kv__row"><span>📅 תאריך לועזי</span><b id="dateG">—</b></div>
+                <div class="kv__row"><span>📅 תאריך עברי</span><b id="dateH">—</b></div>
+                <div class="kv__row"><span>⏰ שעה (ישראל)</span><b id="timeNow">—</b></div>
+                <div class="kv__row"><span>👤 קרדיטים</span><b>AnLoMinus</b></div>
+              </div>
+
+              <div class="mini-note">
+                ✅ האתר ללא תלות בספריות חיצוניות — עובד חלק ב־GitHub Pages.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <dialog class="modal" id="modal">
+    <div class="modal__inner">
+      <div class="modal__head">
+        <div>
+          <div class="modal__title" id="modalTitle">—</div>
+          <div class="modal__tags" id="modalTags">—</div>
+        </div>
+        <button class="btn btn--ghost" id="closeModal" type="button">✖</button>
+      </div>
+      <div class="modal__body" id="modalBody"></div>
+      <div class="modal__foot">
+        <button class="btn btn--soft" id="copyCard" type="button">📋 העתק כרטיסייה</button>
+        <button class="btn" id="shareCard" type="button">🚀 העתק טקסט לפוסט</button>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="footer__left">
+        <div class="footer__title">HanukkahRoots (HR) — Light • Torah • Identity</div>
+        <div class="footer__meta">
+          <span>© <span id="year">—</span> AnLoMinus</span>
+          <span class="sep">•</span>
+          <span>Built for GitHub Pages</span>
+        </div>
+      </div>
+
+      <div class="footer__right">
+        <div class="footer__badge">🕯️ “נר קטן — אור גדול”</div>
+      </div>
+    </div>
+
+    <!-- תיעוד יצירה (קבוע) -->
+    <div class="wrap footer__stamp">
+      <small>
+        🗓️ נבנה: כ״ג בכסלו תשפ״ו • 14 בדצמבר 2025 • ⏰ 19:12 (Asia/Jerusalem)
+      </small>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
