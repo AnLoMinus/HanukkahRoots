@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>HanukkahRoots — תוכנית לימוד מלאה לחנוכה (HSP)</title>
+  <meta name="description" content="תוכנית לימוד מלאה לכל חג החנוכה: שלד יומי, הלכה, מוסר, שמירת הלשון, משימות ויום־יום ל-8 ימים." />
+
+  <!--
+    Built: כ״ג בכסלו תשפ״ו | 14 בדצמבר 2025 | 20:14 (Asia/Jerusalem)
+    Credits: AnLoMinus
+    Repo: HanukkahRoots (HR) — HSP page
+  -->
+
+  <style>
+    :root{
+      --bg:#070a14;
+      --bg2:#0b1020;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.08);
+      --stroke:rgba(255,255,255,.14);
+      --text:#eaf0ff;
+      --muted:rgba(234,240,255,.74);
+      --muted2:rgba(234,240,255,.56);
+      --gold:rgba(255,220,120,.95);
+      --accent:rgba(160,120,255,.95);
+      --ok:rgba(120,255,190,.92);
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 24px;
+      --max: 1080px;
+      --blur: blur(18px);
+    }
+
+    [data-theme="light"]{
+      --bg:#f7f8ff;
+      --bg2:#ffffff;
+      --card:rgba(0,0,0,.05);
+      --card2:rgba(0,0,0,.06);
+      --stroke:rgba(0,0,0,.12);
+      --text:#0b1020;
+      --muted:rgba(11,16,32,.72);
+      --muted2:rgba(11,16,32,.56);
+      --shadow: 0 18px 60px rgba(11,16,32,.12);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 800px at 20% 10%, rgba(140,120,255,.18), transparent 60%),
+        radial-gradient(900px 700px at 80% 20%, rgba(120,180,255,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    .aurora{
+      position:fixed; inset:-40px;
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(255,220,120,.10), transparent 60%),
+        radial-gradient(700px 500px at 80% 30%, rgba(160,120,255,.12), transparent 55%),
+        radial-gradient(900px 600px at 55% 85%, rgba(120,255,190,.08), transparent 60%);
+      filter: blur(40px);
+      opacity:.95;
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .header{
+      position:sticky; top:0; z-index:1000;
+      border-bottom:1px solid var(--stroke);
+      background:rgba(5,8,16,.55);
+      backdrop-filter: var(--blur);
+    }
+    [data-theme="light"] .header{background:rgba(255,255,255,.72)}
+    .header__in{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:14px 0;
+    }
+    .brand{display:flex; align-items:center; gap:12px}
+    .mark{
+      width:44px; height:44px; display:grid; place-items:center;
+      border-radius:14px;
+      background:linear-gradient(135deg, rgba(255,220,120,.16), rgba(120,180,255,.12));
+      border:1px solid var(--stroke);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .title{font-weight:950; letter-spacing:.2px}
+    .sub{font-size:.88rem; color:var(--muted2); margin-top:2px}
+
+    .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:center}
+    .nav a{
+      text-decoration:none; color:var(--muted);
+      padding:10px 12px; border-radius:14px;
+      border:1px solid transparent; transition:.18s;
+    }
+    .nav a:hover{color:var(--text); border-color:var(--stroke); background:var(--card)}
+
+    .btn{
+      cursor:pointer;
+      border:1px solid var(--stroke);
+      background: linear-gradient(135deg, rgba(255,220,120,.16), rgba(120,180,255,.12));
+      color:var(--text);
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:800;
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+      transition:.18s;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0)}
+    .btn--ghost{background:transparent; box-shadow:none}
+    .btn--soft{background:var(--card); box-shadow:none}
+
+    @media (max-width: 900px){
+      .nav{display:none}
+    }
+
+    .hero{padding:30px 0 14px}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px; border-radius:999px;
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.12);
+      backdrop-filter: var(--blur);
+    }
+    [data-theme="light"] .pill{background:rgba(255,255,255,.55)}
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(180deg, var(--gold), var(--accent));
+      box-shadow: 0 0 24px rgba(120,180,255,.42);
+    }
+    h1{
+      margin:14px 0 8px;
+      font-size:2.15rem;
+      line-height:1.12;
+    }
+    .lead{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:1.05rem;
+      line-height:1.75;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius:var(--radius2);
+      padding:16px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-30px;
+      background:
+        radial-gradient(360px 240px at 20% 10%, rgba(255,220,120,.12), transparent 55%),
+        radial-gradient(360px 260px at 80% 30%, rgba(120,180,255,.12), transparent 55%),
+        radial-gradient(360px 260px at 50% 90%, rgba(160,120,255,.10), transparent 60%);
+      filter: blur(18px);
+      opacity:.8;
+      pointer-events:none;
+    }
+    .card > *{position:relative}
+
+    .section{padding:16px 0 6px}
+    .section h2{
+      margin:0;
+      font-size:1.45rem;
+    }
+    .section p{margin:10px 0 0; color:var(--muted); line-height:1.75}
+
+    .list{
+      margin:12px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .item{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.10);
+      border-radius:18px;
+      padding:12px 12px;
+      line-height:1.75;
+      color:var(--muted);
+    }
+    [data-theme="light"] .item{background:rgba(255,255,255,.70); border-color:rgba(0,0,0,.10)}
+    .item b{color:var(--text)}
+    .tagline{
+      margin-top:12px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .tag{
+      font-size:.86rem;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background:var(--card);
+      color:var(--muted2);
+      font-weight:800;
+    }
+
+    .days{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    @media (max-width: 900px){ .days{grid-template-columns:1fr} }
+
+    .dayTitle{
+      display:flex; justify-content:space-between; gap:10px; align-items:flex-start;
+      margin:0 0 8px;
+      font-weight:950;
+      font-size:1.05rem;
+      color:var(--text);
+    }
+    .badge{
+      font-size:.82rem;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.12);
+      color:var(--muted2);
+      font-weight:900;
+      white-space:nowrap;
+    }
+    [data-theme="light"] .badge{background:rgba(255,255,255,.7)}
+
+    .actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .footer{
+      margin-top:18px;
+      border-top:1px solid var(--stroke);
+      padding:16px 0 10px;
+      background:rgba(0,0,0,.18);
+      backdrop-filter: var(--blur);
+    }
+    [data-theme="light"] .footer{background:rgba(255,255,255,.72)}
+    .footRow{
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      color:var(--muted2);
+      line-height:1.7;
+    }
+
+    .rapBox{
+      margin-top:10px;
+      padding:14px;
+      border-radius:var(--radius2);
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.14);
+      color:var(--text);
+      line-height:1.9;
+      white-space:pre-wrap;
+      font-weight:800;
+    }
+    [data-theme="light"] .rapBox{background:rgba(255,255,255,.80)}
+
+    .toast{
+      position:fixed;
+      bottom:18px; left:18px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+      color:white;
+      font-weight:900;
+      z-index:99999;
+      opacity:0;
+      transform: translateY(6px);
+      pointer-events:none;
+      transition:.2s;
+    }
+    .toast.show{opacity:1; transform: translateY(0)}
+  </style>
+</head>
+
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="wrap header__in">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">🕯️</div>
+        <div>
+          <div class="title">HanukkahRoots — תוכנית לימוד מלאה לחנוכה</div>
+          <div class="sub">HSP (Hanukkah + Study) • יום־יום • הלכה • מוסר • שמירת הלשון</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="ניווט">
+        <a href="#goals">🎯 מטרות</a>
+        <a href="#daily">⏱️ שלד יומי</a>
+        <a href="#halacha">📜 הלכה</a>
+        <a href="#depth">🧠 עומק</a>
+        <a href="#days">🕎 8 ימים</a>
+        <a href="#share">🚀 שיתוף</a>
+      </nav>
+
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="החלף מצב תצוגה">🌙/☀️</button>
+        <button class="btn btn--soft" id="copyLinkBtn" type="button">🔗 העתק לינק</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="pill"><span class="dot"></span><span>HanukkahRoots (HR) • Study Page • Built for GitHub Pages</span></div>
+      <h1>🕯️ תוכנית לימוד מלאה לכל חג החנוכה</h1>
+      <p class="lead">
+        תוכנית בנויה לביצוע: <b>שלד יומי קבוע</b>, <b>רצף הלכות</b>, <b>מסלול עומק</b>, <b>משימות מעשיות</b>,
+        ועמוד “מוכן לשיתוף” לפוסטים. כל יום = נר 🎯✨
+      </p>
+
+      <div class="actions">
+        <a class="btn" href="#days">🔥 קפוץ ל־8 הימים</a>
+        <button class="btn btn--soft" id="copySummaryBtn" type="button">🧾 העתק תקציר</button>
+        <button class="btn btn--soft" id="copyRapBtn" type="button">🎤 העתק ראפ</button>
+      </div>
+
+      <div class="grid">
+        <div class="card" id="statusCard">
+          <h2 style="margin:0">🕰️ מצב עמוד</h2>
+          <ul class="list" style="margin-top:10px">
+            <li class="item">📅 תאריך לועזי: <b id="dateG">—</b></li>
+            <li class="item">📅 תאריך עברי: <b id="dateH">—</b></li>
+            <li class="item">⏰ שעה (ישראל): <b id="timeNow">—</b></li>
+            <li class="item">👤 קרדיטים: <b>AnLoMinus</b></li>
+          </ul>
+          <div class="tagline">
+            <span class="tag">🧱 Standalone</span>
+            <span class="tag">⚡ Fast</span>
+            <span class="tag">🕯️ Tech-with-Soul</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 style="margin:0">📜 פסוק מפתח</h2>
+          <p style="margin-top:10px">
+            <b>“כִּי נֵר מִצְוָה וְתוֹרָה אוֹר”</b> — משלי ו, כג 🕯️
+          </p>
+
+          <h2 style="margin:14px 0 0">📐 מספר המידות</h2>
+          <p style="margin-top:10px">
+            <b>8 מידות של חנוכה</b>: אמונה · טהרה · כוונה · התמדה · שמחה · זהות · אחדות · הודאה 🕯️
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="goals">
+      <div class="card">
+        <h2>🎯 מטרות החג</h2>
+        <ul class="list">
+          <li class="item">🕎 <b>להדליק אור פנימי</b>: אמונה, יציבות, שמחה</li>
+          <li class="item">🫒 <b>לשמור טהרה</b>: דיוק, נקיות פנימית, כוונה</li>
+          <li class="item">⚔️ <b>לעמוד מול רעש</b>: הסחות, תרבות זרה, דיבור שלילי</li>
+          <li class="item">🙏 <b>להפוך הודאה לפעולה</b>: תודה, נתינה, אחדות</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="daily">
+      <div class="card">
+        <h2>⏱️ שלד יומי קבוע לכל יום (מומלץ)</h2>
+        <ul class="list">
+          <li class="item">☀️ <b>בוקר (20–35 דק׳)</b>: 📖 חומש יומי + 🧭 נקודת “אור היום”</li>
+          <li class="item">⏳ <b>צהריים (15–25 דק׳)</b>: 📜 הלכה יומית + 🧼 מוסר קצר (נקיות/שמירת הלשון)</li>
+          <li class="item">🌙 <b>ערב (30–50 דק׳)</b>: 🕯️ הדלקה בכוונה + 📚 לימוד עומק + 🙏 הודאה</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="halacha">
+      <div class="card">
+        <h2>📜 מסלול הלכה לכל 8 ימים (רצף ברור)</h2>
+        <ul class="list">
+          <li class="item">1) 🕯️ <b>זמן ההדלקה</b> ומתי מדליקים בפועל</li>
+          <li class="item">2) 🏠 <b>מקום ההדלקה</b> (פתח/חלון/בית) ומה העיקר</li>
+          <li class="item">3) 🧑‍🤝‍🧑 <b>מי מדליק בבית</b> ומנהגי בית</li>
+          <li class="item">4) 🫒 <b>שמן/נרות</b>: מה עדיף, שיעור שמן, פתילות</li>
+          <li class="item">5) ✨ <b>מהדרין מן המהדרין</b>: איך מוסיפים נכון</li>
+          <li class="item">6) 🧯 <b>כבה/שכח/טעה</b>: מה עושים</li>
+          <li class="item">7) 🙏 <b>הלל ועל הניסים</b>: כוונת ההודאה</li>
+          <li class="item">8) 🎉 <b>שמחת חנוכה בקדושה</b>: סעודה, שירה, בית</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="depth">
+      <div class="card">
+        <h2>🧠 מסלול עומק (8 ימים)</h2>
+        <ul class="list">
+          <li class="item">1) 🕎 <b>מנורה ואור</b>: מהו אור רוחני בחיים</li>
+          <li class="item">2) 🫒 <b>שמן זך</b>: טהור בעידן של רעש</li>
+          <li class="item">3) 🔥 <b>אש שלא נכבית</b>: התמדה גם כשאין חשק</li>
+          <li class="item">4) ⚔️ <b>מלחמת זהות</b>: מה לא מוותרים עליו</li>
+          <li class="item">5) 🧼 <b>נקיות</b>: ניקוי הרגל קטן כל יום</li>
+          <li class="item">6) 🗣️ <b>שמירת הלשון</b>: להפוך דיבור לנר</li>
+          <li class="item">7) 🤝 <b>אחדות</b>: נר אישי שמתחבר לציבור</li>
+          <li class="item">8) 👑 <b>הודאה</b>: תודה כתוכנית חיים</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="days">
+      <div class="card">
+        <h2>🕎 תוכנית 8 הימים — יום־יום (מוכן כמו דף עבודה)</h2>
+
+        <div class="days">
+          <div class="card" style="box-shadow:none">
+            <div class="dayTitle"><span>🕯️ יום 1 — 🌟 “נר קטן מתחיל מהלב”</span><span class="badge">Day 1</span></div>
+            <ul class="list">
+              <li class="item">📖 חומש + רש״י (קצר)</li>
+              <li class="item">📜 הלכה: זמן ההדלקה</li>
+              <li class="item">🧼 מוסר: נקיות — <b>תיקון הרגל אחד קטן</b></li>
+              <li class="item">🎯 משימה: פעולה שמכניסה אור לבית (סדר/שלום/חיוך)</li>
+            </ul>
+          </div>
+
+          <div class="card" style="box-shadow:none">
+            <div class="dayTitle"><span>🕯️ יום 2 — 🫒 “זך יותר חשוב מהרבה”</span><span class="badge">Day 2</span></div>
+            <ul class="list">
+              <li class="item">📜 הלכה: מקום ההדלקה</li>
+              <li class="item">🧼 שמירת הלשון: היום <b>לא מעבירים ביקורת</b> — רק בונים</li>
+              <li class="item">🎯 משימה: מחמאה אמיתית למישהו בבית/בעבודה</li>
+            </ul>
+          </div>
+
+          <div class="card" style="box-shadow:none">
+            <div class="dayTitle"><span>🕯️ יום 3 — 🔥 “אש של התמדה”</span><span class="badge">Day 3</span></div>
+            <ul class="list">
+              <li class="item">📜 הלכה: מי מדליק בבית</li>
+              <li class="item">🧼 נקיות: לעצור “אוטומט” אחד (טלפון/הרגל)</li>
+              <li class="item">🎯 משימה: 10 דק׳ לימוד בלי הפרעה בכלל</li>
+            </ul>
+          </div>
+
+          <div class="card" style="box-shadow:none">
+            <div class="dayTitle"><span>🕯️ יום 4 — 🕎 “מנורה = סדר”</span><span class="badge">Day 4</span></div>
+            <ul class="list">
+              <li class="item">📜 הלכה: שמן/נרות + שיעור הדלקה</li>
+              <li class="item">🧼 שמירת הלשון: <b>בדיקת כוונה לפני דיבור</b></li>
+              <li class="item">🎯 משימה: להפוך משפט שלילי למשפט בונה</li>
+            </ul>
+          </div>
+
+          <div class="card" style="box-shadow:none">
+            <div class="dayTitle"><span>🕯️ יום 5 — ⚔️ “זהות לא מוכרים”</span><span class="badge">Day 5</span></div>
+            <ul class="list">
+              <li class="item">📜 הלכה: מהדרין מן המהדרין</li>
+              <li class="item">🧼 נקיות: ניקוי חדר קטן (פיזי/דיגיטלי)</li>
+              <li class="item">🎯 משימה: למחוק 10 דברים מיותרים (קבצים/לינקים/הסחות)</li>
+            </ul>
+          </div>
+
+          <div class="card" style="box-shadow:none">
+            <div class="dayTitle"><span>🕯️ יום 6 — 🧯 “גם אם כבה — ממשיכים”</span><span class="badge">Day 6</span></div>
+            <ul class="list">
+              <li class="item">📜 הלכה: כבה/שכח/טעות במספר</li>
+              <li class="item">🧼 שמירת הלשון: היום <b>לא חוזרים על שמועה</b></li>
+              <li class="item">🎯 משימה: שלום קטן (פיוס/הודעה טובה/סגירת פינה)</li>
+            </ul>
+          </div>
+
+          <div class="card" style="box-shadow:none">
+            <div class="dayTitle"><span>🕯️ יום 7 — 🤝 “אחדות = אור חזק”</span><span class="badge">Day 7</span></div>
+            <ul class="list">
+              <li class="item">📜 הלכה: הלל ועל הניסים (עיקרי כוונה)</li>
+              <li class="item">🧼 נקיות: התקדמות מדרגה אחת בלי לחץ</li>
+              <li class="item">🎯 משימה: נתינה (צדקה/עזרה/תמיכה)</li>
+            </ul>
+          </div>
+
+          <div class="card" style="box-shadow:none">
+            <div class="dayTitle"><span>🕯️ יום 8 — 👑 “הודאה היא מלכות”</span><span class="badge">Day 8</span></div>
+            <ul class="list">
+              <li class="item">📜 הלכה: שמחת חנוכה בקדושה</li>
+              <li class="item">🧼 שמירת הלשון: היום — <b>רק מילים שמדליקות</b></li>
+              <li class="item">🎯 משימה: “סיכום חנוכה” — 8 שורות, נר לכל יום</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="share">
+      <div class="card">
+        <h2>🚀 שיתוף מהיר (פוסט מוכן)</h2>
+        <p>
+          לחץ על הכפתורים כדי להעתיק טקסט לפוסט / קישור / ראפ — ולפרסם בכל מקום ✅
+        </p>
+
+        <div class="actions">
+          <button class="btn" id="copyPostBtn" type="button">🧾 העתק טקסט לפוסט</button>
+          <button class="btn btn--soft" id="copyLinkBtn2" type="button">🔗 העתק לינק</button>
+          <button class="btn btn--soft" id="copyRapBtn2" type="button">🎤 העתק ראפ</button>
+        </div>
+
+        <div class="rapBox" id="rapBox">נר ראשון נדלק — הלב נהיה מגדל,
+שמן זך בפנים — לא צריך שום היכל.
+מילה טובה מדליקה — לשון נהיית אור,
+חנוכה זה לנצח — לא לכבות בשחור.</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap footRow">
+        <div>
+          <b>HanukkahRoots (HR) • HSP Page</b><br/>
+          🗓️ נבנה: <b>כ״ג בכסלו תשפ״ו</b> • <b>14 בדצמבר 2025</b> • ⏰ <b>20:14</b> (Asia/Jerusalem)
+        </div>
+        <div>
+          👤 קרדיטים: <b>AnLoMinus</b><br/>
+          📜 פסוק: <b>“כִּי נֵר מִצְוָה וְתוֹרָה אוֹר”</b> — משלי ו, כג
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast">✅ הועתק!</div>
+
+  <script>
+    // Theme
+    const themeBtn = document.getElementById("themeBtn");
+    const root = document.documentElement;
+
+    function setTheme(mode){
+      root.setAttribute("data-theme", mode);
+      localStorage.setItem("hr-theme", mode);
+    }
+    setTheme(localStorage.getItem("hr-theme") || "dark");
+    themeBtn.addEventListener("click", ()=>{
+      const cur = root.getAttribute("data-theme") || "dark";
+      setTheme(cur === "dark" ? "light" : "dark");
+    });
+
+    // Time (Israel)
+    const dateG = document.getElementById("dateG");
+    const dateH = document.getElementById("dateH");
+    const timeNow = document.getElementById("timeNow");
+
+    const fmtDate = new Intl.DateTimeFormat("he-IL", { dateStyle:"full", timeZone:"Asia/Jerusalem" });
+    const fmtTime = new Intl.DateTimeFormat("he-IL", { timeStyle:"medium", timeZone:"Asia/Jerusalem" });
+
+    dateG.textContent = fmtDate.format(new Date());
+    function tick(){ timeNow.textContent = fmtTime.format(new Date()); }
+    tick(); setInterval(tick, 1000);
+
+    try{
+      const heb = new Intl.DateTimeFormat("he-IL-u-ca-hebrew", { dateStyle:"full", timeZone:"Asia/Jerusalem" });
+      dateH.textContent = heb.format(new Date());
+    }catch{
+      dateH.textContent = "כ״ג בכסלו תשפ״ו";
+    }
+
+    // Copy helpers
+    const toast = document.getElementById("toast");
+    function showToast(msg){
+      toast.textContent = msg || "✅ הועתק!";
+      toast.classList.add("show");
+      setTimeout(()=>toast.classList.remove("show"), 1100);
+    }
+
+    function copyText(text){
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(()=>showToast("✅ הועתק!"));
+        return;
+      }
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      ta.remove();
+      showToast("✅ הועתק!");
+    }
+
+    const repoLink = "https://anlominus.github.io/HanukkahRoots/";
+
+    document.getElementById("copyLinkBtn").addEventListener("click", ()=> copyText(repoLink));
+    document.getElementById("copyLinkBtn2").addEventListener("click", ()=> copyText(repoLink));
+
+    const rap = document.getElementById("rapBox").textContent.trim();
+    document.getElementById("copyRapBtn").addEventListener("click", ()=> copyText(rap));
+    document.getElementById("copyRapBtn2").addEventListener("click", ()=> copyText(rap));
+
+    const summary =
+`🕯️ תוכנית לימוד מלאה לחנוכה (HSP)
+🎯 מטרות: אור פנימי • טהרה • מסירות • זהות • הודאה
+⏱️ שלד יומי: בוקר חומש • צהריים הלכה+מוסר • ערב הדלקה+עומק+תודה
+🕎 8 ימים: משימות יומיות + רצף הלכתי + מסלול עומק
+
+🔗 ${repoLink}
+— AnLoMinus • HanukkahRoots (HR)`;
+
+    document.getElementById("copySummaryBtn").addEventListener("click", ()=> copyText(summary));
+
+    const post =
+`🕯️ חנוכה — תוכנית לימוד מלאה לכל החג (HSP)
+
+🎯 הבסיס:
+• אור פנימי שאינו תלוי בחוץ
+• שמן זך = איכות לפני כמות
+• מסירות = זהות שאינה נמכרת
+• הודאה = להפוך תודה לפעולה
+
+⏱️ שלד יומי:
+☀️ בוקר: חומש + נקודת “אור היום”
+⏳ צהריים: הלכה + מוסר (נקיות/שמירת הלשון)
+🌙 ערב: הדלקה בכוונה + לימוד עומק + הודאה
+
+🕯️ פסוק מפתח:
+“כִּי נֵר מִצְוָה וְתוֹרָה אוֹר” (משלי ו, כג)
+
+🔗 ${repoLink}
+— AnLoMinus • HanukkahRoots (HR)`;
+
+    document.getElementById("copyPostBtn").addEventListener("click", ()=> copyText(post));
+  </script>
+</body>
+</html>
